@@ -10732,12 +10732,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"express-static-gzip@npm:2.1.4":
-  version: 2.1.4
-  resolution: "express-static-gzip@npm:2.1.4"
+"express-static-gzip@npm:2.1.5":
+  version: 2.1.5
+  resolution: "express-static-gzip@npm:2.1.5"
   dependencies:
     serve-static: ^1.14.1
-  checksum: 7c3f46634196111a70125ebdb3e5f0596515efea4fde0ea01e02e466e58656f507b935cd27c7de16de33e7235b44b61e01fb22a47dd6efb47694e876f729cc07
+  checksum: a06a9d75a5563fcbdabae26bf46c3bd569e56e49d374fa1f4af4ee2e936936dba5a74214d96adb918e4e0b0bdfa8c88a0e380592566dfd4d2d29b473c96891a4
   languageName: node
   linkType: hard
 
@@ -15749,12 +15749,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nanoid@npm:3.2.0":
-  version: 3.2.0
-  resolution: "nanoid@npm:3.2.0"
+"nanoid@npm:3.3.0":
+  version: 3.3.0
+  resolution: "nanoid@npm:3.3.0"
   bin:
     nanoid: bin/nanoid.cjs
-  checksum: 3d1d5a69fea84e538057cf64106e713931c4ef32af344068ecff153ff91252f39b0f2b472e09b0dfff43ac3cf520c92938d90e6455121fe93976e23660f4fccc
+  checksum: 183d7da5c910a717a6058c7d4485d69de6f50fe3eb903830fa965430c7bbd516d70b9eb523a25cf32550bebe835a7adf080b6059808d50c9a8895fa9204e7499
   languageName: node
   linkType: hard
 
@@ -19424,7 +19424,7 @@ __metadata:
     eslint-plugin-react: 7.28.0
     eslint-plugin-react-hooks: 4.3.0
     express: 4.17.2
-    express-static-gzip: 2.1.4
+    express-static-gzip: 2.1.5
     fetch-mock: 9.11.0
     glob: 7.2.0
     gnu-terry-pratchett: 0.0.2
