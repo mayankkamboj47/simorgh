@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "outDir": "build",
+    "target": "es6",
+    "lib": ["es5", "es6", "dom"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "strictNullChecks": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": false,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "#app/*": ["src/app/*"],
+      "#contexts/*": ["src/app/contexts/*"],
+      "#components/*": ["src/app/components/*"],
+      "#containers/*": ["src/app/containers/*"],
+      "#data/*": ["data/*"],
+      "#hooks/*": ["src/app/hooks/*"],
+      "#legacy/*": ["src/app/legacy/*"],
+      "#lib/*": ["src/app/lib/*"],
+      "#models/*": ["src/app/models/*"],
+      "#pages/*": ["src/app/pages/*"],
+      "#testHelpers/*": ["src/testHelpers/*"],
+      "#server/*": ["src/server/*"]
+    }
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["node_modules", "build"]
+}

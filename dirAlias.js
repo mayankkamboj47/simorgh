@@ -51,6 +51,6 @@ module.exports = {
       ['#server', './src/server'],
       ['#utils', './src/app/routes/utils'],
     ],
-    extensions: ['.js', '.jsx', '.json'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
   },
 };

@@ -1,3 +1,5 @@
 /* eslint-disable import/prefer-default-export */
 
-export scriptPropType from './scripts';
+import _scriptPropType from './scripts';
+
+export { _scriptPropType as scriptPropType };
