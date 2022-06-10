@@ -28,6 +28,7 @@
       "#models/*": ["src/app/models/*"],
       "#pages/*": ["src/app/pages/*"],
       "#testHelpers/*": ["src/testHelpers/*"],
+      "#types/*": ["src/app/types/*"],
       "#server/*": ["src/server/*"]
     }
   },

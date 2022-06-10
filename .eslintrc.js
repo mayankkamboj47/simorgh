@@ -6,6 +6,7 @@ module.exports = {
     'plugin:prettier/recommended',
     'plugin:jsx-a11y/recommended',
     'plugin:cypress/recommended',
+    'plugin:@typescript-eslint/recommended',
   ],
   env: {
     es6: true,
@@ -13,7 +14,7 @@ module.exports = {
     jest: true,
     node: true,
   },
-  parser: 'babel-eslint',
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 2017,
     sourceType: 'module',
@@ -46,6 +47,10 @@ module.exports = {
     ],
     'import/extensions': [1, { json: 'ignorePackages' }],
     'jsx-a11y/no-redundant-roles': 'off',
+    'no-use-before-define': 'off',
+    'react/require-default-props': 'off',
+    '@typescript-eslint/no-var-requires': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
   },
   settings: {
     'import/resolver': {
