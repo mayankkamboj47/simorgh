@@ -7,7 +7,7 @@ import {
 } from './cookies';
 import Chartbeat from './Chartbeat';
 
-export const UserContext = React.createContext({});
+export const UserContext = React.createContext<Record<string, any>>({});
 
 export const UserContextProvider = ({ children }) => {
   const [cookiePolicy, setCookiePolicy] = useState(getCookiePolicy());

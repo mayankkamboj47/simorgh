@@ -21,7 +21,7 @@ import {
   TOPIC_PAGE,
 } from '#app/routes/utils/pageTypes';
 
-export const EventTrackingContext = createContext({});
+export const EventTrackingContext = createContext<Record<string, any>>({});
 
 const getCampaignID = pageType => {
   const campaignID = {

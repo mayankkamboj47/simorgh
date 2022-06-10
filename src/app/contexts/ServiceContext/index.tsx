@@ -5,7 +5,7 @@ import { getVariant } from '#lib/utilities/variantHandler';
 import getLangOverride from '#lib/utilities/langHandler';
 import variantPropType from '../../models/propTypes/variants';
 
-export const ServiceContext = React.createContext({});
+export const ServiceContext = React.createContext<Record<string, any>>({});
 
 export const ServiceContextProvider = ({
   children,

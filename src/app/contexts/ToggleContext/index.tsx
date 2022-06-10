@@ -5,7 +5,7 @@ import { toggleReducer } from './reducer';
 
 const environment = process.env.SIMORGH_APP_ENV || 'local';
 
-const ToggleContext = createContext({});
+const ToggleContext = createContext<Record<string, any>>({});
 
 const ToggleContextProvider = ({ children, toggles }) => {
   const [toggleState, toggleDispatch] = useReducer(toggleReducer, toggles);
