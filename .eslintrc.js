@@ -23,7 +23,15 @@ module.exports = {
     },
   },
   ignorePatterns: ['**/tz/**', 'index.stories.jsx', 'index.amp.stories.jsx'],
-  plugins: ['prettier', 'json', 'jsx-a11y', 'react-hooks', 'cypress', 'import'],
+  plugins: [
+    'prettier',
+    'json',
+    'jsx-a11y',
+    'react-hooks',
+    'cypress',
+    'import',
+    '@typescript-eslint',
+  ],
   rules: {
     'react/jsx-filename-extension': [
       2,
