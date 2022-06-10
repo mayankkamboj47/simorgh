@@ -6,7 +6,6 @@ module.exports = {
     'plugin:prettier/recommended',
     'plugin:jsx-a11y/recommended',
     'plugin:cypress/recommended',
-    'plugin:@typescript-eslint/recommended',
   ],
   env: {
     es6: true,
@@ -23,14 +22,20 @@ module.exports = {
     },
   },
   ignorePatterns: ['**/tz/**', 'index.stories.jsx', 'index.amp.stories.jsx'],
-  plugins: [
-    'prettier',
-    'json',
-    'jsx-a11y',
-    'react-hooks',
-    'cypress',
-    'import',
-    '@typescript-eslint',
+  plugins: ['prettier', 'json', 'jsx-a11y', 'react-hooks', 'cypress', 'import'],
+  // TypeScript overrides
+  overrides: [
+    {
+      files: ['*.ts', '*.tsx'],
+      extends: ['plugin:@typescript-eslint/recommended'],
+      parserOptions: {
+        project: ['./tsconfig.json'],
+      },
+      rules: {
+        '@typescript-eslint/no-var-requires': 'off',
+        '@typescript-eslint/no-explicit-any': 'off',
+      },
+    },
   ],
   rules: {
     'react/jsx-filename-extension': [
@@ -57,8 +62,6 @@ module.exports = {
     'jsx-a11y/no-redundant-roles': 'off',
     'no-use-before-define': 'off',
     'react/require-default-props': 'off',
-    '@typescript-eslint/no-var-requires': 'off',
-    '@typescript-eslint/no-explicit-any': 'off',
   },
   settings: {
     'import/resolver': {
