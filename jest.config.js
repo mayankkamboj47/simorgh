@@ -8,6 +8,8 @@ const unitTests = {
   transform: {
     '^.+\\.js$': 'babel-jest',
     '^.+\\.jsx$': 'babel-jest',
+    '^.+\\.ts$': 'ts-jest',
+    '^.+\\.tsx$': 'ts-jest',
   },
   displayName: 'Unit Tests',
   collectCoverageFrom: [
@@ -19,6 +21,8 @@ const unitTests = {
   testMatch: [
     '**/__tests__/**/*.js?(x)',
     '**/?(*.)+(spec|test).js?(x)',
+    '**/__tests__/**/*.ts?(x)',
+    '**/?(*.)+(spec|test).ts?(x)',
     '!**/src/integration/!(utils)/**/*',
   ],
 };
