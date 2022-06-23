@@ -3,11 +3,11 @@ import {
   C_WHITE,
   C_GHOST,
   C_POSTBOX_30,
-} from '@bbc/psammead-styles/colours';
-import { cyrillicAndLatin } from '@bbc/gel-foundations/scripts';
-import { ukrainian as brandSVG } from '@bbc/psammead-assets/svgs';
-import '@bbc/moment-timezone-include/tz/GMT';
-import '@bbc/psammead-locales/moment/uk';
+} from '#legacy/psammead-styles/src/colours';
+import cyrillicAndLatin from '#legacy/gel-foundations/src/scripts/latin-and-cyrillic';
+import { ukrainian as brandSVG } from '#legacy/psammead-assets/src/svgs';
+import '#legacy/moment-timezone-include/tz/GMT';
+import '#legacy/psammead-locales/moment/uk';
 import withContext from '../../../contexts/utils/withContext';
 import { mainTranslations as russianMainTranslations } from './russian';
 
@@ -74,6 +74,11 @@ const baseServiceConfig = {
     },
   },
   translations: {
+    pagination: {
+      previousPage: 'Повернутися',
+      nextPage: 'Наступна',
+      pageXOfY: 'Page {x} із {y}',
+    },
     ads: {
       advertisementLabel: 'Реклама',
     },
@@ -308,8 +313,8 @@ const baseServiceConfig = {
         text: 'Cookies',
       },
       {
-        href: 'https://www.bbc.co.uk/send/u50853885',
-        text: "Зв'язатися з BBC",
+        href: 'https://www.bbc.co.uk/ukrainian/send/u50853885',
+        text: 'Напишіть на ВВС',
       },
       {
         id: 'COOKIE_SETTINGS',
@@ -328,8 +333,8 @@ const baseServiceConfig = {
       url: '/ukrainian',
     },
     {
-      title: 'Коронавірус',
-      url: '/ukrainian/topics/c87z2kmre5nt',
+      title: 'Війна з Росією',
+      url: '/ukrainian/topics/czp6w66edqpt',
     },
     {
       title: 'Історії',

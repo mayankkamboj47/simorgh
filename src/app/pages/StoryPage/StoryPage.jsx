@@ -6,14 +6,15 @@ import {
   GEL_SPACING_TRPL,
   GEL_SPACING_QUAD,
   GEL_SPACING,
-} from '@bbc/gel-foundations/spacings';
-import SectionLabel from '@bbc/psammead-section-label';
+} from '#legacy/gel-foundations/src/spacings';
+import SectionLabel from '#legacy/psammead-section-label/src';
 import {
   GEL_GROUP_4_SCREEN_WIDTH_MIN,
   GEL_GROUP_3_SCREEN_WIDTH_MAX,
-} from '@bbc/gel-foundations/breakpoints';
+} from '#legacy/gel-foundations/src/breakpoints';
 import path from 'ramda/src/path';
 import pathOr from 'ramda/src/pathOr';
+
 import Grid, { GelPageGrid, GridItemLarge } from '#app/components/Grid';
 import { getImageParts } from '#app/routes/cpsAsset/getInitialData/convertToOptimoBlocks/blocks/image/helpers';
 import CpsMetadata from '#containers/CpsMetadata';
@@ -33,6 +34,7 @@ import MostReadContainer from '#containers/MostRead';
 import ATIAnalytics from '#containers/ATIAnalytics';
 import ComscoreAnalytics from '#containers/ComscoreAnalytics';
 import OptimizelyPageViewTracking from '#containers/OptimizelyPageViewTracking';
+import OptimizelyArticleCompleteTracking from '#containers/OptimizelyArticleCompleteTracking';
 import fauxHeadline from '#containers/FauxHeadline';
 import visuallyHiddenHeadline from '#containers/VisuallyHiddenHeadline';
 import CpsTable from '#containers/CpsTable';
@@ -71,6 +73,7 @@ const StoryPage = ({ pageData, mostReadEndpointOverride }) => {
     lang,
     showRelatedTopics,
   } = useContext(ServiceContext);
+
   const { enabled: preloadLeadImageToggle } = useToggle('preloadLeadImage');
   const title = path(['promo', 'headlines', 'headline'], pageData);
   const shortHeadline = path(['promo', 'headlines', 'shortHeadline'], pageData);
@@ -102,7 +105,7 @@ const StoryPage = ({ pageData, mostReadEndpointOverride }) => {
     pageData,
   );
   const featuresInitialData = path(['secondaryColumn', 'features'], pageData);
-  const recommendationsInitialData = path(['recommendations'], pageData);
+  const recommendationsData = path(['recommendations'], pageData);
   const topics = path(['metadata', 'topics'], pageData);
 
   const gridColumns = {
@@ -197,7 +200,7 @@ const StoryPage = ({ pageData, mostReadEndpointOverride }) => {
       <CpsRecommendations
         {...props}
         parentColumns={gridColsMain}
-        items={recommendationsInitialData}
+        items={recommendationsData}
       />
     ),
     disclaimer: props => (
@@ -269,16 +272,20 @@ const StoryPage = ({ pageData, mostReadEndpointOverride }) => {
     }
   `;
 
+  const StyledSectionLabel = styled(SectionLabel)`
+    margin-top: 0;
+  `;
+
   const MostReadWrapper = ({ children }) => (
     <section role="region" aria-labelledby="Most-Read" data-e2e="most-read">
-      <SectionLabel
+      <StyledSectionLabel
         script={script}
         labelId="Most-Read"
         service={service}
         dir={dir}
       >
         {header}
-      </SectionLabel>
+      </StyledSectionLabel>
       {children}
     </section>
   );
@@ -335,6 +342,7 @@ const StoryPage = ({ pageData, mostReadEndpointOverride }) => {
         >
           <main role="main">
             <Blocks blocks={blocks} componentsToRender={componentsToRender} />
+            <OptimizelyArticleCompleteTracking />
           </main>
 
           {showRelatedTopics && topics && (

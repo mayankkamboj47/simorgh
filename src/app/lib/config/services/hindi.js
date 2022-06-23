@@ -3,11 +3,11 @@ import {
   C_WHITE,
   C_GHOST,
   C_POSTBOX_30,
-} from '@bbc/psammead-styles/colours';
-import { devanagariAndGurmukhi } from '@bbc/gel-foundations/scripts';
-import { hindi as brandSVG } from '@bbc/psammead-assets/svgs';
-import '@bbc/moment-timezone-include/tz/Asia/Kolkata';
-import '@bbc/psammead-locales/moment/hi';
+} from '#legacy/psammead-styles/src/colours';
+import devanagariAndGurmukhi from '#legacy/gel-foundations/src/scripts/devanagari-and-gurmukhi';
+import { hindi as brandSVG } from '#legacy/psammead-assets/src/svgs';
+import '#legacy/moment-timezone-include/tz/Asia/Kolkata';
+import '#legacy/psammead-locales/moment/hi';
 import withContext from '../../../contexts/utils/withContext';
 
 export const service = {
@@ -61,16 +61,16 @@ export const service = {
     showRelatedTopics: true,
     podcastPromo: {
       title: 'पॉडकास्ट',
-      brandTitle: 'विवेचना',
+      brandTitle: 'दिन भर',
       brandDescription:
-        'नई रिलीज़ हुई फ़िल्मों की समीक्षा करता साप्ताहिक कार्यक्रम',
+        'वो राष्ट्रीय और अंतरराष्ट्रीय ख़बरें जो दिनभर सुर्खियां बनीं.',
       image: {
-        src: 'https://ichef.bbci.co.uk/images/ic/$recipe/p09kn96g.jpg',
-        alt: 'बीबीसी 70 एमएम',
+        src: 'https://ichef.bbci.co.uk/images/ic/448xn/p09ds7cb.jpg',
+        alt: 'दिन भर',
       },
       linkLabel: {
-        text: 'एपिसोड्स',
-        href: 'https://www.bbc.com/hindi/podcasts/p05523zq',
+        text: 'ड्रामा क्वीन',
+        href: 'https://www.bbc.com/hindi/podcasts/p09ds7zx',
       },
       skipLink: {
         text: 'छोड़कर %title% आगे बढ़ें',
@@ -78,10 +78,16 @@ export const service = {
       },
     },
     translations: {
+      pagination: {
+        previousPage: 'पिछला',
+        nextPage: 'अगला',
+        pageXOfY: 'Page {x} र {y}',
+      },
       ads: {
         advertisementLabel: 'विज्ञापन',
       },
-      recommendationTitle: 'और ये भी पढ़ें',
+      recommendationTitle: 'ये भी पढ़ें',
+      splitRecommendationTitle: 'कुछ और जानिए',
       seeAll: 'सब देखें',
       home: 'होम पेज',
       currentPage: 'मौजूदा पन्ना',
@@ -325,8 +331,8 @@ export const service = {
           text: 'कुकीज़',
         },
         {
-          href: 'https://www.bbc.co.uk/send/u50853357',
-          text: 'बीबीसी से संपर्क करें',
+          href: 'https://www.bbc.co.uk/hindi/send/u50853357',
+          text: 'बीबीसी से संपर्क',
         },
         {
           id: 'COOKIE_SETTINGS',

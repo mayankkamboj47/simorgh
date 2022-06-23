@@ -3,11 +3,11 @@ import path from 'ramda/src/path';
 import is from 'ramda/src/is';
 import styled from '@emotion/styled';
 import { shape, string, number, bool, func, node } from 'prop-types';
-import { GEL_SPACING_TRPL } from '@bbc/gel-foundations/spacings';
+import { GEL_SPACING_TRPL } from '#legacy/gel-foundations/src/spacings';
 import {
   GEL_GROUP_4_SCREEN_WIDTH_MIN,
   GEL_GROUP_2_SCREEN_WIDTH_MAX,
-} from '@bbc/gel-foundations/breakpoints';
+} from '#legacy/gel-foundations/src/breakpoints';
 import { useLocation } from 'react-router-dom';
 import pathOr from 'ramda/src/pathOr';
 import ComscoreAnalytics from '#containers/ComscoreAnalytics';
@@ -20,7 +20,9 @@ import EpisodeImage from '#containers/OnDemandImage';
 import LinkedData from '#containers/LinkedData';
 import getMediaId from '#lib/utilities/getMediaId';
 import getMasterbrand from '#lib/utilities/getMasterbrand';
-import getEmbedUrl from '#lib/utilities/getUrlHelpers/getEmbedUrl';
+import getEmbedUrl, {
+  makeAbsolute,
+} from '#lib/utilities/getUrlHelpers/getEmbedUrl';
 import RadioScheduleContainer from '#containers/RadioSchedule';
 import RecentAudioEpisodes from '#containers/EpisodeList/RecentAudioEpisodes';
 import FooterTimestamp from '#containers/OnDemandFooterTimestamp';
@@ -158,6 +160,7 @@ const OnDemandAudioPage = ({ pageData, mediaIsAvailable, MediaError }) => {
         title={metadataTitle}
         description={shortSynopsis}
         {...metadataImageProps}
+        hasAmpPage={false}
       />
 
       <GelPageGrid
@@ -230,7 +233,7 @@ const OnDemandAudioPage = ({ pageData, mediaIsAvailable, MediaError }) => {
                       thumbnailUrl: thumbnailImageUrl,
                       duration: durationISO8601,
                       uploadDate: new Date(releaseDateTimeStamp).toISOString(),
-                      embedURL: embedUrl,
+                      embedURL: makeAbsolute(embedUrl),
                     },
                   ]
                 : []

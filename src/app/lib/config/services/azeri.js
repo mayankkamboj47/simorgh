@@ -3,11 +3,11 @@ import {
   C_WHITE,
   C_GHOST,
   C_POSTBOX_30,
-} from '@bbc/psammead-styles/colours';
-import { latinDiacritics } from '@bbc/gel-foundations/scripts';
-import { azeri as brandSVG } from '@bbc/psammead-assets/svgs';
-import '@bbc/moment-timezone-include/tz/Asia/Baku';
-import '@bbc/psammead-locales/moment/az';
+} from '#legacy/psammead-styles/src/colours';
+import { azeri as brandSVG } from '#legacy/psammead-assets/src/svgs';
+import latinDiacritics from '#legacy/gel-foundations/src/scripts/latin-with-diacritics';
+import '#legacy/moment-timezone-include/tz/Asia/Baku';
+import '#legacy/psammead-locales/moment/az';
 import withContext from '../../../contexts/utils/withContext';
 
 export const service = {
@@ -59,6 +59,12 @@ export const service = {
     showAdPlaceholder: true,
     showRelatedTopics: true,
     translations: {
+      pagination: {
+        page: 'səhifə',
+        previousPage: 'Geriyə',
+        nextPage: 'Növbəti',
+        pageXOfY: 'səhifə {x} haqqında {y}',
+      },
       ads: {
         advertisementLabel: 'Reklam',
       },
@@ -237,7 +243,7 @@ export const service = {
           'Sorry, we can’t display this part of the story on this lightweight mobile page.',
         linkText: 'View the full version of the page to see all the content.',
       },
-      topStoriesTitle: 'Bu günün xəbərləri',
+      topStoriesTitle: 'Digər xəbərlər',
       featuresAnalysisTitle: 'Bunları da oxuyun',
     },
     brandSVG,
@@ -285,7 +291,7 @@ export const service = {
           text: 'Cookies',
         },
         {
-          href: 'https://www.bbc.co.uk/send/u50853225',
+          href: 'https://www.bbc.co.uk/azeri/send/u50853225',
           text: 'BBC ilə Əlaqə',
         },
         {

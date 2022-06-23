@@ -3,11 +3,11 @@ import {
   C_WHITE,
   C_GHOST,
   C_POSTBOX_30,
-} from '@bbc/psammead-styles/colours';
-import { yoruba as brandSVG } from '@bbc/psammead-assets/svgs';
-import { cyrillicAndLatin } from '@bbc/gel-foundations/scripts';
-import '@bbc/psammead-locales/moment/yo';
-import '@bbc/moment-timezone-include/tz/Africa/Lagos';
+} from '#legacy/psammead-styles/src/colours';
+import { yoruba as brandSVG } from '#legacy/psammead-assets/src/svgs';
+import cyrillicAndLatin from '#legacy/gel-foundations/src/scripts/latin-and-cyrillic';
+import '#legacy/psammead-locales/moment/yo';
+import '#legacy/moment-timezone-include/tz/Africa/Lagos';
 import withContext from '../../../contexts/utils/withContext';
 
 export const service = {
@@ -59,6 +59,11 @@ export const service = {
     swPath: '/sw.js',
     frontPageTitle: 'Àbáwọlé',
     translations: {
+      pagination: {
+        previousPage: 'Ìṣájú',
+        nextPage: 'Tókàn',
+        pageXOfY: 'Page {x} nínú {y}',
+      },
       ads: {
         advertisementLabel: 'Advertisement',
       },
@@ -289,7 +294,7 @@ export const service = {
           text: 'Cookies',
         },
         {
-          href: 'https://www.bbc.co.uk/send/u50853973',
+          href: 'https://www.bbc.co.uk/yoruba/send/u50853973',
           text: 'Kàn sí BBC',
         },
         {

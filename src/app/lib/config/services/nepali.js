@@ -3,11 +3,11 @@ import {
   C_WHITE,
   C_GHOST,
   C_POSTBOX_30,
-} from '@bbc/psammead-styles/colours';
-import { devanagariAndGurmukhi } from '@bbc/gel-foundations/scripts';
-import { nepali as brandSVG } from '@bbc/psammead-assets/svgs';
-import '@bbc/moment-timezone-include/tz/Asia/Kathmandu';
-import '@bbc/psammead-locales/moment/ne';
+} from '#legacy/psammead-styles/src/colours';
+import devanagariAndGurmukhi from '#legacy/gel-foundations/src/scripts/devanagari-and-gurmukhi';
+import { nepali as brandSVG } from '#legacy/psammead-assets/src/svgs';
+import '#legacy/moment-timezone-include/tz/Asia/Kathmandu';
+import '#legacy/psammead-locales/moment/ne';
 import withContext from '../../../contexts/utils/withContext';
 
 export const service = {
@@ -59,6 +59,12 @@ export const service = {
     showAdPlaceholder: true,
     showRelatedTopics: true,
     translations: {
+      pagination: {
+        page: 'पेज',
+        previousPage: 'पछाडि',
+        nextPage: 'अर्को',
+        pageXOfY: 'पेज {x} को {y}',
+      },
       ads: {
         advertisementLabel: 'विज्ञापन',
       },
@@ -217,7 +223,7 @@ export const service = {
         watch: 'हेर्नुहोस्',
         listenLive: 'प्रत्यक्ष सुन्नुहोस्',
         listenNext: 'अर्को सुन्नुहोस्',
-        liveLabel: 'प्रत्यक्ष प्रसारण',
+        liveLabel: 'लाइभ',
         nextLabel: 'अर्को',
         previousRadioShow: 'पछिल्लो रेडिओ कार्यक्रम',
         nextRadioShow: 'अघिल्लो रेडिओ कार्यक्रम',
@@ -295,7 +301,7 @@ export const service = {
           text: 'कुकीज',
         },
         {
-          href: 'https://www.bbc.co.uk/send/u50853511',
+          href: 'https://www.bbc.co.uk/nepali/send/u50853511',
           text: 'बीबीसीलाई सम्पर्क गर्नुहोस्',
         },
         {
@@ -325,7 +331,7 @@ export const service = {
       },
       {
         title: 'भिडियो',
-        url: '/nepali/media/video',
+        url: '/nepali/topics/cw9kv027nwnt',
       },
     ],
   },

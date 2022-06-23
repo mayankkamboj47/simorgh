@@ -3,11 +3,11 @@ import {
   C_WHITE,
   C_GHOST,
   C_POSTBOX_30,
-} from '@bbc/psammead-styles/colours';
-import { pidgin as brandSVG } from '@bbc/psammead-assets/svgs';
-import { cyrillicAndLatin } from '@bbc/gel-foundations/scripts';
-import '@bbc/psammead-locales/moment/pcm';
-import '@bbc/moment-timezone-include/tz/Africa/Lagos';
+} from '#legacy/psammead-styles/src/colours';
+import { pidgin as brandSVG } from '#legacy/psammead-assets/src/svgs';
+import cyrillicAndLatin from '#legacy/gel-foundations/src/scripts/latin-and-cyrillic';
+import '#legacy/psammead-locales/moment/pcm';
+import '#legacy/moment-timezone-include/tz/Africa/Lagos';
 import withContext from '../../../contexts/utils/withContext';
 
 export const service = {
@@ -61,6 +61,11 @@ export const service = {
     showAdPlaceholder: false,
     showRelatedTopics: true,
     translations: {
+      pagination: {
+        previousPage: 'Before',
+        nextPage: 'Next',
+        pageXOfY: 'Page {x} of {y}',
+      },
       ads: {
         advertisementLabel: 'Tori we dem pay for',
       },
@@ -216,7 +221,7 @@ export const service = {
         },
         listen: 'Make you listen',
         watch: 'Look',
-        liveLabel: 'AS E DE HAPPEN',
+        liveLabel: 'As E Dey Happen',
         nextLabel: 'NEXT',
         previousRadioShow: 'Previous radio show',
         nextRadioShow: 'Next radio show',
@@ -324,7 +329,7 @@ export const service = {
           text: 'Cookies',
         },
         {
-          href: 'https://www.bbc.co.uk/send/u50853577',
+          href: 'https://www.bbc.co.uk/pidgin/send/u50853577',
           text: 'Call BBC',
         },
         {

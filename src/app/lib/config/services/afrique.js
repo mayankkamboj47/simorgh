@@ -3,10 +3,10 @@ import {
   C_WHITE,
   C_GHOST,
   C_POSTBOX_30,
-} from '@bbc/psammead-styles/colours';
-import { latinDiacritics } from '@bbc/gel-foundations/scripts';
-import { afrique as brandSVG } from '@bbc/psammead-assets/svgs';
-import '@bbc/moment-timezone-include/tz/GMT';
+} from '#legacy/psammead-styles/src/colours';
+import latinDiacritics from '#legacy/gel-foundations/src/scripts/latin-with-diacritics';
+import { afrique as brandSVG } from '#legacy/psammead-assets/src/svgs';
+import '#legacy/moment-timezone-include/tz/GMT';
 import withContext from '../../../contexts/utils/withContext';
 import 'moment/locale/fr';
 
@@ -60,6 +60,12 @@ export const service = {
     showAdPlaceholder: true,
     showRelatedTopics: true,
     translations: {
+      pagination: {
+        page: 'Page',
+        previousPage: 'Page précédente',
+        nextPage: 'Page suivante',
+        pageXOfY: 'Page {x} de {y}',
+      },
       ads: {
         advertisementLabel: 'Publicités',
       },
@@ -303,7 +309,7 @@ export const service = {
           text: 'Cookies',
         },
         {
-          href: 'https://www.bbc.co.uk/send/u50853159',
+          href: 'https://www.bbc.co.uk/afrique/send/u50853159',
           text: 'Contactez la BBC',
         },
         {

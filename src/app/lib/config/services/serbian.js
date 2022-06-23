@@ -3,15 +3,13 @@ import {
   C_WHITE,
   C_GHOST,
   C_POSTBOX_30,
-} from '@bbc/psammead-styles/colours';
-import {
-  latinDiacritics,
-  cyrillicAndLatin,
-} from '@bbc/gel-foundations/scripts';
-import { serbian as brandSVG } from '@bbc/psammead-assets/svgs';
-import '@bbc/moment-timezone-include/tz/GMT';
-import '@bbc/psammead-locales/moment/sr-cyrl';
-import '@bbc/psammead-locales/moment/sr';
+} from '#legacy/psammead-styles/src/colours';
+import latinDiacritics from '#legacy/gel-foundations/src/scripts/latin-with-diacritics';
+import cyrillicAndLatin from '#legacy/gel-foundations/src/scripts/latin-and-cyrillic';
+import { serbian as brandSVG } from '#legacy/psammead-assets/src/svgs';
+import '#legacy/moment-timezone-include/tz/GMT';
+import '#legacy/psammead-locales/moment/sr-cyrl';
+import '#legacy/psammead-locales/moment/sr';
 import withContext from '../../../contexts/utils/withContext';
 
 const baseServiceConfig = {
@@ -104,7 +102,7 @@ export const service = {
           text: 'Kolačići',
         },
         {
-          href: 'https://www.bbc.co.uk/send/u50853665',
+          href: 'https://www.bbc.co.uk/serbian/send/u50853665',
           text: 'Kontaktirajte BBC',
         },
         {
@@ -131,6 +129,10 @@ export const service = {
       {
         title: 'Početna strana',
         url: '/serbian/lat',
+      },
+      {
+        title: 'Ukrajina',
+        url: '/serbian/lat/topics/c5wzvzzz5vrt',
       },
       {
         title: 'Korona virus',
@@ -162,6 +164,12 @@ export const service = {
       variant: 'cyr',
     },
     translations: {
+      pagination: {
+        page: 'Stranica',
+        previousPage: 'Prethodno',
+        nextPage: 'Sledeće',
+        pageXOfY: 'Stranica {x} od {y}',
+      },
       ads: {
         advertisementLabel: 'Advertisement',
       },
@@ -398,7 +406,7 @@ export const service = {
           text: 'Колачићи',
         },
         {
-          href: 'https://www.bbc.com/serbian/cyr/institutional-43543431',
+          href: 'https://www.bbc.co.uk/serbian/send/u50853665',
           text: 'Контактирајте ББЦ',
         },
         {
@@ -425,6 +433,10 @@ export const service = {
       {
         title: 'Почетна страна',
         url: '/serbian/cyr',
+      },
+      {
+        title: 'Украјина',
+        url: '/serbian/cyr/topics/cqwvxvvw9qrt',
       },
       {
         title: 'Корона вирус',
@@ -456,6 +468,12 @@ export const service = {
       variant: 'lat',
     },
     translations: {
+      pagination: {
+        page: 'Страница',
+        previousPage: 'Претходно',
+        nextPage: 'Следеће',
+        pageXOfY: 'Страница {x} од {y}',
+      },
       ads: {
         advertisementLabel: 'Advertisement',
       },

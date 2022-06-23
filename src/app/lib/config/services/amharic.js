@@ -3,15 +3,15 @@ import {
   C_WHITE,
   C_GHOST,
   C_POSTBOX_30,
-} from '@bbc/psammead-styles/colours';
-import { noAscendersOrDescenders } from '@bbc/gel-foundations/scripts';
-import { amharic as brandSVG } from '@bbc/psammead-assets/svgs';
+} from '#legacy/psammead-styles/src/colours';
+import noAscendersOrDescenders from '#legacy/gel-foundations/src/scripts/no-ascenders-or-descenders';
+import { amharic as brandSVG } from '#legacy/psammead-assets/src/svgs';
 import {
   F_NOTO_SANS_ETHIOPIC_BOLD,
   F_NOTO_SANS_ETHIOPIC_REGULAR,
-} from '@bbc/psammead-styles/fonts';
-import '@bbc/moment-timezone-include/tz/Africa/Addis_Ababa';
-import '@bbc/psammead-locales/moment/am';
+} from '#legacy/psammead-styles/src/fonts';
+import '#legacy/moment-timezone-include/tz/Africa/Addis_Ababa';
+import '#legacy/psammead-locales/moment/am';
 import withContext from '../../../contexts/utils/withContext';
 
 export const service = {
@@ -63,6 +63,12 @@ export const service = {
     showAdPlaceholder: false,
     showRelatedTopics: true,
     translations: {
+      pagination: {
+        page: 'ገፁ',
+        previousPage: 'ከዚህ በፊት ያለ',
+        nextPage: 'ቀጣይ',
+        pageXOfY: 'ገፁ {x} የ {y}',
+      },
       ads: {
         advertisementLabel: 'ማስታወቂያ',
       },
@@ -285,7 +291,7 @@ export const service = {
           text: 'ኩኪዎች',
         },
         {
-          href: 'https://www.bbc.co.uk/send/u50853181',
+          href: 'https://www.bbc.co.uk/amharic/send/u50853181',
           text: 'ቢቢሲን ያግኙ',
         },
         {

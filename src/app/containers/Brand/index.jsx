@@ -1,12 +1,17 @@
 import React, { useContext } from 'react';
 import styled from '@emotion/styled';
-import Brand from '@bbc/psammead-brand';
+import Brand from '#legacy/psammead-brand/src';
 import { bool, node, oneOfType, func, shape, any } from 'prop-types';
 import { ServiceContext } from '#contexts/ServiceContext';
 
 const StyledBrand = styled(Brand)`
   position: relative;
   z-index: 1;
+  svg {
+    fill: currentColor;
+    @media screen and (forced-colors: active) {
+      fill: linkText;
+    }
 `;
 
 const BrandContainer = ({ skipLink, scriptLink, brandRef, ...props }) => {

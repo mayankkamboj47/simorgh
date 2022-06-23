@@ -49,7 +49,7 @@ Object {
 exports[`Canonical Feature Index page Footer Anchors should match text and url 7`] = `
 Object {
   "text": "بی بی سی سے رابطہ کریں",
-  "url": "https://www.bbc.co.uk/send/u50853907",
+  "url": "https://www.bbc.co.uk/urdu/send/u50853907",
 }
 `;
 
@@ -300,9 +300,8 @@ exports[`Canonical Feature Index page Story Promo Headline should match text 1`]
 exports[`Canonical Feature Index page Story Promo Image should match image 1`] = `
 <img
   alt="بل گیٹس"
-  class="eehpdyc0 bbc-rb7xa0 e1enwo3v0"
+  class="eehpdyc0 bbc-rb7xa0 e11uq3260"
   height="576"
-  sizes="(max-width: 600px) 100vw, (max-width: 1008px) 50vw, 496px"
   src="https://ichef.bbci.co.uk/news/660/cpsprodpb/B04F/production/_112753154_bill.jpg"
   width="1024"
 />

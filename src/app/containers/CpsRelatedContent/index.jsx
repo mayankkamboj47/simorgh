@@ -2,18 +2,19 @@ import React, { useContext } from 'react';
 import { arrayOf, shape, number, bool, string, elementType } from 'prop-types';
 import pathOr from 'ramda/src/pathOr';
 import styled from '@emotion/styled';
-import { GEL_SPACING_DBL } from '@bbc/gel-foundations/spacings';
+import { GEL_SPACING_DBL } from '#legacy/gel-foundations/src/spacings';
 import { storyItem } from '#models/propTypes/storyItem';
 import { ServiceContext } from '#contexts/ServiceContext';
+
 import CpsOnwardJourney from '../CpsOnwardJourney';
 import RelatedContentPromo from './RelatedContentPromo';
 import RelatedContentPromoList from './RelatedContentPromoList';
 
-const eventTrackingData = {
+const getEventTrackingData = () => ({
   block: {
     componentName: 'related-content',
   },
-};
+});
 
 const StyledCpsOnwardJourney = styled(CpsOnwardJourney)`
   margin-bottom: ${GEL_SPACING_DBL};
@@ -29,8 +30,11 @@ const CpsRelatedContent = ({
 }) => {
   const { translations } = useContext(ServiceContext);
 
-  const title =
-    _title || pathOr('Related Content', ['relatedContent'], translations);
+  const eventTrackingData = getEventTrackingData();
+
+  const translationPath = ['Related Content', ['relatedContent']];
+
+  const title = _title || pathOr(...translationPath, translations);
 
   return (
     <StyledCpsOnwardJourney

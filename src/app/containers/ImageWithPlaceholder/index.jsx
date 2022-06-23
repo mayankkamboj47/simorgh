@@ -2,10 +2,10 @@ import React, { useContext, useState } from 'react';
 import { string, number, bool, node, elementType } from 'prop-types';
 import styled from '@emotion/styled';
 import LazyLoad from 'react-lazyload';
-import ImagePlaceholder from '@bbc/psammead-image-placeholder';
-import Image, { AmpImg } from '@bbc/psammead-image';
+import ImagePlaceholder from '#legacy/psammead-image-placeholder/src';
+import Image, { AmpImg } from '#legacy/psammead-image/src';
 import { Helmet } from 'react-helmet';
-import { C_GHOST } from '@bbc/psammead-styles/colours';
+import { C_GHOST } from '#legacy/psammead-styles/src/colours';
 import { RequestContext } from '#contexts/RequestContext';
 
 const LAZYLOAD_OFFSET = 250; // amount of pixels below the viewport to begin loading the image
@@ -64,12 +64,12 @@ const ImageWithPlaceholder = ({
   const imageToRender = (
     <ImageComponent onLoad={() => setIsLoaded(true)} {...imageProps} />
   );
-  const shouldPreload = !isAmp && preload;
+
   const isImgJpg = imgType === 'jpg' || imgType === 'jpeg';
 
   return (
     <>
-      {shouldPreload && (
+      {preload && (
         <Helmet>
           <link
             rel="preload"
@@ -96,6 +96,7 @@ const ImageWithPlaceholder = ({
             height={height}
             width={width}
             style={!isImgJpg ? { backgroundColor: C_GHOST } : null}
+            {...(preload && { 'data-hero': true })}
           />
         ) : (
           renderImage(imageToRender, lazyLoad, fallback)

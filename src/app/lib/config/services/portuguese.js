@@ -3,20 +3,17 @@ import {
   C_WHITE,
   C_GHOST,
   C_POSTBOX_30,
-} from '@bbc/psammead-styles/colours';
-import { latinDiacritics } from '@bbc/gel-foundations/scripts';
+} from '#legacy/psammead-styles/src/colours';
+import latinDiacritics from '#legacy/gel-foundations/src/scripts/latin-with-diacritics';
 import {
   F_REITH_SANS_BOLD,
-  F_REITH_SANS_BOLD_ITALIC,
-  F_REITH_SANS_ITALIC,
   F_REITH_SANS_REGULAR,
   F_REITH_SERIF_MEDIUM,
-  F_REITH_SERIF_MEDIUM_ITALIC,
   F_REITH_SERIF_LIGHT,
-} from '@bbc/psammead-styles/fonts';
-import { portuguese as brandSVG } from '@bbc/psammead-assets/svgs';
-import '@bbc/moment-timezone-include/tz/America/Sao_Paulo';
-import '@bbc/psammead-locales/moment/pt-br';
+} from '#legacy/psammead-styles/src/fonts';
+import { portuguese as brandSVG } from '#legacy/psammead-assets/src/svgs';
+import '#legacy/moment-timezone-include/tz/America/Sao_Paulo';
+import '#legacy/psammead-locales/moment/pt-br';
 import withContext from '../../../contexts/utils/withContext';
 
 export const service = {
@@ -89,10 +86,17 @@ export const service = {
       },
     },
     translations: {
+      pagination: {
+        page: 'Página',
+        previousPage: 'Anterior',
+        nextPage: 'Próxima',
+        pageXOfY: 'Página {x} de {y}',
+      },
       ads: {
         advertisementLabel: 'Publicidade',
       },
-      recommendationTitle: 'Talvez também te interesse',
+      recommendationTitle: 'Matérias recomendadas',
+      splitRecommendationTitle: 'Mais matérias recomendadas',
       seeAll: 'Ver todos',
       home: 'Início',
       currentPage: 'Página atual',
@@ -327,8 +331,8 @@ export const service = {
           text: 'Cookies',
         },
         {
-          href: 'https://www.bbc.co.uk/send/u50853599',
-          text: 'Fale com a BBC',
+          href: 'https://www.bbc.co.uk/portuguese/send/u50853599',
+          text: 'Contate a BBC',
         },
         {
           id: 'COOKIE_SETTINGS',
@@ -342,11 +346,8 @@ export const service = {
     },
     fonts: [
       F_REITH_SANS_BOLD,
-      F_REITH_SANS_BOLD_ITALIC,
-      F_REITH_SANS_ITALIC,
       F_REITH_SANS_REGULAR,
       F_REITH_SERIF_MEDIUM,
-      F_REITH_SERIF_MEDIUM_ITALIC,
       F_REITH_SERIF_LIGHT,
     ],
     timezone: 'America/Sao_Paulo',

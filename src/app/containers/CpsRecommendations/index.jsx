@@ -5,16 +5,16 @@ import {
   GEL_GROUP_2_SCREEN_WIDTH_MIN,
   GEL_GROUP_3_SCREEN_WIDTH_MIN,
   GEL_GROUP_4_SCREEN_WIDTH_MIN,
-} from '@bbc/gel-foundations/breakpoints';
+} from '#legacy/gel-foundations/src/breakpoints';
 import pathOr from 'ramda/src/pathOr';
 import path from 'ramda/src/path';
-import { C_GHOST } from '@bbc/psammead-styles/colours';
+import { C_GHOST } from '#legacy/psammead-styles/src/colours';
 import {
   GEL_SPACING,
   GEL_SPACING_DBL,
   GEL_SPACING_TRPL,
-} from '@bbc/gel-foundations/spacings';
-import SectionLabel from '@bbc/psammead-section-label';
+} from '#legacy/gel-foundations/src/spacings';
+import SectionLabel from '#legacy/psammead-section-label/src';
 import SkipLinkWrapper from '#components/SkipLinkWrapper';
 
 import { storyItem } from '#models/propTypes/storyItem';
@@ -61,11 +61,9 @@ const CpsRecommendations = ({ items }) => {
 
   if (!hasStoryRecommendations || !enabled || !items.length) return null;
 
-  const title = pathOr(
-    'You may also be interested in',
-    ['recommendationTitle'],
-    translations,
-  );
+  const titlePath = ['Recommended stories', ['recommendationTitle']];
+
+  const title = pathOr(...titlePath, translations);
 
   const { text, endTextVisuallyHidden } = path(['skipLink'], recommendations);
 
@@ -75,7 +73,7 @@ const CpsRecommendations = ({ items }) => {
 
   const isSinglePromo = items.length === 1;
 
-  const endTextId = 'end-of-recommendations';
+  const endTextId = `end-of-recommendations`;
 
   const skipLink = {
     endTextId,
@@ -95,6 +93,7 @@ const CpsRecommendations = ({ items }) => {
               dir={dir}
               labelId={labelId}
               columnType="main"
+              mobileDivider={false}
               overrideHeadingAs="strong"
               bar={false}
               backgroundColor={C_GHOST}

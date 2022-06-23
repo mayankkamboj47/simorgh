@@ -3,15 +3,15 @@ import {
   C_WHITE,
   C_GHOST,
   C_POSTBOX_30,
-} from '@bbc/psammead-styles/colours';
-import { bengali } from '@bbc/gel-foundations/scripts';
-import { bengali as brandSVG } from '@bbc/psammead-assets/svgs';
+} from '#legacy/psammead-styles/src/colours';
+import bengali from '#legacy/gel-foundations/src/scripts/bengali';
+import { bengali as brandSVG } from '#legacy/psammead-assets/src/svgs';
 import {
   F_NOTO_SERIF_BENGALI_BOLD,
   F_NOTO_SERIF_BENGALI_REGULAR,
-} from '@bbc/psammead-styles/fonts';
-import '@bbc/moment-timezone-include/tz/Asia/Dhaka';
-import '@bbc/psammead-locales/moment/bn';
+} from '#legacy/psammead-styles/src/fonts';
+import '#legacy/moment-timezone-include/tz/Asia/Dhaka';
+import '#legacy/psammead-locales/moment/bn';
 import withContext from '../../../contexts/utils/withContext';
 
 export const service = {
@@ -64,6 +64,12 @@ export const service = {
     showAdPlaceholder: true,
     showRelatedTopics: true,
     translations: {
+      pagination: {
+        page: 'পৃষ্ঠা',
+        previousPage: 'ফিরে যাব',
+        nextPage: 'পরবর্তী',
+        pageXOfY: 'পৃষ্ঠা {x} এর মধ্যে {y}',
+      },
       ads: {
         advertisementLabel: 'বিজ্ঞাপন',
       },
@@ -299,8 +305,8 @@ export const service = {
           text: 'কুকিজ',
         },
         {
-          href: 'https://www.bbc.co.uk/send/u50853247',
-          text: 'বিবিসির সঙ্গে যোগাযোগ করুন',
+          href: 'https://www.bbc.co.uk/bengali/send/u50853247',
+          text: 'বিবিসির সাথে যোগাযোগ করুন',
         },
         {
           id: 'COOKIE_SETTINGS',
@@ -325,7 +331,7 @@ export const service = {
       },
       {
         title: 'ভিডিও',
-        url: '/bengali/media/video',
+        url: '/bengali/topics/cxy7jg418e7t',
       },
     ],
   },

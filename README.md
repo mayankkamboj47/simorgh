@@ -77,6 +77,8 @@ Each render is passed through a set of HOC's (Higher Order Components) to enhanc
 - withData
 - withHashChangeHandler
 
+With a selection of page types passed through withOptimizelyProvider, currently [Article](https://github.com/bbc/simorgh/blob/latest/src/app/pages/ArticlePage/index.jsx) and [Story](https://github.com/bbc/simorgh/blob/latest/src/app/pages/StoryPage/index.jsx) pages.
+
 #### withVariant
 
 The variant HOC ensures that services that have variants (e.g. `simp`, `lat`) always redirects to a url that renders the appropriate variant.
@@ -112,6 +114,10 @@ Assuming the other HOC's have returned the original Article or FrontPage contain
 #### withHashChangeHandler
 
 The withHashChangeHandler HOC is a wrapper applied to all pages that checks for changes to the URL hash value. Pages include accessibility controls to skip content should the user choose to do so, this utilises the URL hash to skip users to specific areas of the page. Due to the nature of the client side routing, changes to the URL results in a re-render. This causes some unsightly UI flickering for some components, specifically media and social embeds. This HOC applies checks to the URL so see if a re-render is necessary, or if not preventing a re-render using `React.memo`.
+
+#### withOptimizelyProvider
+
+The withOptimizelyProvider HOC returns components that have been enhanced with access to an Optimizely client, that is used to run our A/B testing. This is done to limit bundle sizes, as we seperate some of our bundles by page type, that means if we're only running A/B testing on certain page types, we can prevent polluting page type bundles with the weight of the SDK library we use for Optimizely.
 
 ### Adding a new Page type
 
@@ -226,6 +232,15 @@ Services with variants can't be accessed using the format above, instead the var
 
 - [http://localhost:7080/zhongwen/simp](http://localhost:7080/zhongwen/simp)
 - [http://localhost:7080/zhongwen/simp.amp](http://localhost:7080/zhongwen/simp.amp).
+
+### Topic Pages
+
+Topic pages use internal BBC APIs that are not publicly accessible. This can cause the following warnings to appear when developing locally:
+
+envConfig/secret.env: No such file or directory
+You will not have access to topics
+
+Internal developers who need to work on topic pages locally should contact the team for access.
 
 ### Other page types
 

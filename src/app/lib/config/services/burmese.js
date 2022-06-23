@@ -3,11 +3,14 @@ import {
   C_WHITE,
   C_GHOST,
   C_POSTBOX_30,
-} from '@bbc/psammead-styles/colours';
-import { burmese } from '@bbc/gel-foundations/scripts';
-import { burmese as brandSVG } from '@bbc/psammead-assets/svgs';
-import { F_PADAUK_BOLD, F_PADAUK_REGULAR } from '@bbc/psammead-styles/fonts';
-import '@bbc/moment-timezone-include/tz/GMT';
+} from '#legacy/psammead-styles/src/colours';
+import burmese from '#legacy/gel-foundations/src/scripts/burmese';
+import { burmese as brandSVG } from '#legacy/psammead-assets/src/svgs';
+import {
+  F_PADAUK_BOLD,
+  F_PADAUK_REGULAR,
+} from '#legacy/psammead-styles/src/fonts';
+import '#legacy/moment-timezone-include/tz/GMT';
 import withContext from '../../../contexts/utils/withContext';
 import 'moment/locale/my';
 
@@ -74,6 +77,12 @@ export const service = {
       },
     },
     translations: {
+      pagination: {
+        page: 'စာမျက်နှာ',
+        previousPage: 'နောက်သို့ပြန်သွားရန်',
+        nextPage: 'ရှေ့သို့သွားရန်',
+        pageXOfY: 'စာမျက်နှာ {x} ရဲ့ {y}',
+      },
       ads: {
         advertisementLabel: 'ကြော်ငြာ',
       },
@@ -314,7 +323,7 @@ export const service = {
           text: 'ကွတ်ကီး',
         },
         {
-          href: 'https://www.bbc.co.uk/send/u50853269',
+          href: 'https://www.bbc.co.uk/burmese/send/u50853269',
           text: 'ဘီဘီစီကို ဆက်သွယ်ရန်',
         },
         {

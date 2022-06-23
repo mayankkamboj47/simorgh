@@ -1,20 +1,21 @@
 import React, { useContext } from 'react';
 import { bool, shape, number } from 'prop-types';
 import styled from '@emotion/styled';
+import makeRelativeUrlPath from '#lib/utilities/makeRelativeUrlPath';
 import pathOr from 'ramda/src/pathOr';
 import {
   GEL_GROUP_3_SCREEN_WIDTH_MIN,
   GEL_GROUP_3_SCREEN_WIDTH_MAX,
   GEL_GROUP_4_SCREEN_WIDTH_MIN,
-} from '@bbc/gel-foundations/breakpoints';
+} from '#legacy/gel-foundations/src/breakpoints';
 import {
   GEL_SPACING,
   GEL_SPACING_DBL,
   GEL_SPACING_TRPL,
   GEL_SPACING_QUAD,
-} from '@bbc/gel-foundations/spacings';
-import SectionLabel from '@bbc/psammead-section-label';
-import { StoryPromoUl } from '@bbc/psammead-story-promo-list';
+} from '#legacy/gel-foundations/src/spacings';
+import SectionLabel from '#legacy/psammead-section-label/src';
+import { StoryPromoUl } from '#legacy/psammead-story-promo-list/src';
 import Grid from '#app/components/Grid';
 import { ServiceContext } from '#contexts/ServiceContext';
 import groupShape from '#models/propTypes/frontPageGroup';
@@ -235,7 +236,7 @@ const IndexPageSection = ({ bar, group, sectionNumber, showAllPromos }) => {
         service={service}
         dir={dir}
         linkText={isLink ? seeAll : null}
-        href={href}
+        href={makeRelativeUrlPath(href)}
       >
         {strapline}
       </SectionLabel>

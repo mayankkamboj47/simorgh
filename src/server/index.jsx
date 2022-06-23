@@ -29,6 +29,7 @@ import {
 import sendCustomMetric from './utilities/customMetrics';
 import { NON_200_RESPONSE } from './utilities/customMetrics/metrics.const';
 import local from './local';
+import getAgent from './utilities/getAgent';
 
 const morgan = require('morgan');
 
@@ -117,11 +118,19 @@ if (process.env.SIMORGH_APP_ENV === 'local') {
   local(server);
 }
 
+const injectDefaultCacheHeader = (req, res, next) => {
+  res.set(
+    'cache-control',
+    `public, stale-if-error=90, stale-while-revalidate=30, max-age=30`,
+  );
+  next();
+};
+
 // Catch all for all routes
 server.get(
   '/*',
-  injectCspHeaderProdBuild,
-  async ({ url, headers, path: urlPath }, res) => {
+  [injectCspHeaderProdBuild, injectDefaultCacheHeader],
+  async ({ url, query, headers, path: urlPath }, res) => {
     logger.info(SERVER_SIDE_RENDER_REQUEST_RECEIVED, {
       url,
       headers,
@@ -136,6 +145,7 @@ server.get(
         route: { getInitialData, pageType },
         variant,
       } = getRouteProps(urlPath);
+      const { page } = query;
 
       // Set derivedPageType based on matched route
       derivedPageType = pageType || derivedPageType;
@@ -146,8 +156,10 @@ server.get(
         path: url,
         service,
         variant,
+        page,
         pageType,
         toggles,
+        getAgent,
       });
 
       data.toggles = toggles;
@@ -188,6 +200,10 @@ server.get(
       if (result.redirectUrl) {
         res.redirect(301, result.redirectUrl);
       } else if (result.html) {
+        res.set(
+          'onion-location',
+          `https://www.bbcweb3hytmzhn5d532owbu6oqadra5z3ar726vq5kgwwn6aucdccrad.onion${urlPath}`,
+        );
         res.status(status).send(result.html);
       } else {
         throw new Error('unknown result');

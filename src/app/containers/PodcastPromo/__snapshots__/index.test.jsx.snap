@@ -118,6 +118,12 @@ exports[`Inline Should render correctly 1`] = `
   right: 0.1875rem;
 }
 
+@media screen and (forced-colors: active) {
+  .emotion-11>svg {
+    fill: canvasText;
+  }
+}
+
 .emotion-13 {
   vertical-align: middle;
   margin: 0 0.25rem;
@@ -387,6 +393,12 @@ exports[`Inline Should render correctly 1`] = `
   right: 0.1875rem;
 }
 
+@media screen and (forced-colors: active) {
+  .emotion-29>svg {
+    fill: canvasText;
+  }
+}
+
 @media (min-width: 20rem) and (max-width: 37.4375rem) {
   .emotion-29 {
     font-size: 0.875rem;
@@ -541,7 +553,7 @@ exports[`Inline Should render correctly 1`] = `
           >
             <a
               class="emotion-23 emotion-24"
-              href="https://www.bbc.com/russian/media-47937790"
+              href="/russian/media-47937790"
             >
               <span
                 class="podcast-promo--hover podcast-promo--focus podcast-promo--visited"
@@ -648,6 +660,12 @@ exports[`SecondaryColumn Should render correctly 1`] = `
   position: relative;
   bottom: 0.3125rem;
   right: 0.1875rem;
+}
+
+@media screen and (forced-colors: active) {
+  .emotion-6>svg {
+    fill: canvasText;
+  }
 }
 
 .emotion-8 {
@@ -881,6 +899,12 @@ exports[`SecondaryColumn Should render correctly 1`] = `
   right: 0.1875rem;
 }
 
+@media screen and (forced-colors: active) {
+  .emotion-24>svg {
+    fill: canvasText;
+  }
+}
+
 .emotion-26 {
   vertical-align: middle;
   margin: 0 0.25rem;
@@ -951,7 +975,7 @@ exports[`SecondaryColumn Should render correctly 1`] = `
           >
             <a
               class="emotion-20 emotion-21"
-              href="https://www.bbc.com/russian/media-47937790"
+              href="/russian/media-47937790"
             >
               <span
                 class="podcast-promo--hover podcast-promo--focus podcast-promo--visited"

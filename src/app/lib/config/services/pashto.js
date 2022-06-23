@@ -3,16 +3,16 @@ import {
   C_WHITE,
   C_GHOST,
   C_POSTBOX_30,
-} from '@bbc/psammead-styles/colours';
-import { arabic } from '@bbc/gel-foundations/scripts';
-import { pashto as brandSVG } from '@bbc/psammead-assets/svgs';
+} from '#legacy/psammead-styles/src/colours';
+import arabic from '#legacy/gel-foundations/src/scripts/arabic';
+import { pashto as brandSVG } from '#legacy/psammead-assets/src/svgs';
 import {
   F_REITH_QALAM_REGULAR,
   F_REITH_QALAM_BOLD,
-} from '@bbc/psammead-styles/fonts';
-import '@bbc/psammead-locales/moment/ps';
-import '@bbc/moment-timezone-include/tz/GMT';
-import { jalaali } from '@bbc/psammead-calendars';
+} from '#legacy/psammead-styles/src/fonts';
+import '#legacy/psammead-locales/moment/ps';
+import '#legacy/moment-timezone-include/tz/GMT';
+import jalaali from '#legacy/psammead-calendars/src';
 import withContext from '../../../contexts/utils/withContext';
 
 export const service = {
@@ -65,6 +65,12 @@ export const service = {
     showAdPlaceholder: true,
     showRelatedTopics: true,
     translations: {
+      pagination: {
+        page: 'پاڼه',
+        previousPage: 'مخکينۍ پاڼه',
+        nextPage: 'بله پاڼه',
+        pageXOfY: 'پاڼه {x} د {y}',
+      },
       ads: {
         advertisementLabel: 'اعلان',
       },
@@ -228,7 +234,7 @@ export const service = {
         watch: 'و یې ګورئ',
         listenLive: 'ژوندۍ خپرونه واورئ',
         listenNext: 'راتلونکې برخه واورئ ',
-        liveLabel: 'ژوندۍ',
+        liveLabel: 'ژوندۍ پاڼه',
         nextLabel: 'بل',
         previousRadioShow: 'تېره راډیویي‌ خپرونه',
         nextRadioShow: 'راتلونکې راډیویي خپرونه',
@@ -308,7 +314,7 @@ export const service = {
           text: 'Cookies',
         },
         {
-          href: 'https://www.bbc.co.uk/send/u50853533',
+          href: 'https://www.bbc.co.uk/pashto/send/u50853533',
           text: 'زموږ سره اړیکي',
         },
         {

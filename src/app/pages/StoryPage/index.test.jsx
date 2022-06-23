@@ -4,7 +4,7 @@ import { StaticRouter } from 'react-router-dom';
 import deepClone from 'ramda/src/clone';
 
 // test helpers
-import { render } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import assocPath from 'ramda/src/assocPath';
 import fetchMock from 'fetch-mock';
 
@@ -30,7 +30,7 @@ import ukrainianInRussianPageData from '#data/ukrainian/cpsAssets/news-russian-2
 import ukrainianSecondaryColumnData from '#data/ukrainian/secondaryColumn/index.json';
 import ukrainianMostReadData from '#data/ukrainian/mostRead/index.json';
 import russianPageDataWithoutInlinePromo from './fixtureData/russianPageDataWithoutPromo';
-import StoryPage from '.';
+import StoryPageIndex from '.';
 
 fetchMock.config.overwriteRoutes = false; // http://www.wheresrhys.co.uk/fetch-mock/#usageconfiguration allows us to mock the same endpoint multiple times
 
@@ -61,6 +61,14 @@ jest.mock('#containers/Ad/Canonical/CanonicalAdBootstrapJs', () => {
     </div>
   );
   return CanonicalAdBootstrapJs;
+});
+
+jest.mock('#containers/ATIAnalytics/beacon', () => {
+  return {
+    __esModule: true,
+    default: jest.fn(),
+    sendEventBeacon: jest.fn(),
+  };
 });
 
 const defaultToggleState = {
@@ -99,7 +107,7 @@ const Page = ({
           statusCode={200}
           showAdsBasedOnLocation={showAdsBasedOnLocation}
         >
-          <StoryPage service={service} pageData={pageData} />
+          <StoryPageIndex service={service} pageData={pageData} />
         </RequestContextProvider>
       </ServiceContextProvider>
     </ToggleContext.Provider>
@@ -155,6 +163,8 @@ jest.mock('#containers/PageHandlers/withContexts', () => Component => {
 
   return ContextsContainer;
 });
+
+jest.mock('#hooks/useOptimizelyVariation', () => jest.fn(() => null));
 
 const pageType = 'cpsAsset';
 
@@ -523,6 +533,28 @@ describe('Story Page', () => {
 
   it('should not render canonical ad bootstrap on amp', async () => {
     process.env.SIMORGH_APP_ENV = 'test';
+    const observers = new Map();
+    const observerSpy = jest
+      .spyOn(global, 'IntersectionObserver')
+      .mockImplementationOnce(cb => {
+        const item = {
+          callback: cb,
+          elements: new Set(),
+        };
+
+        const instance = {
+          observe: jest.fn(element => {
+            item.elements.add(element);
+          }),
+          disconnect: jest.fn(() => {
+            item.elements.clear();
+          }),
+        };
+
+        observers.set(instance, item);
+
+        return instance;
+      });
     const toggles = {
       ads: {
         enabled: true,
@@ -553,7 +585,12 @@ describe('Story Page', () => {
     );
 
     const adBootstrap = queryByTestId('adBootstrap');
-    expect(adBootstrap).not.toBeInTheDocument();
+
+    await waitFor(() => {
+      expect(adBootstrap).not.toBeInTheDocument();
+      observers.clear();
+      observerSpy.mockRestore();
+    });
   });
 
   it('should render the inline podcast promo component on russian pages with a paragraph of 940 characters and after 8th paragraph', async () => {

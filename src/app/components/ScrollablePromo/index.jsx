@@ -1,17 +1,28 @@
 import React, { useContext } from 'react';
 import { arrayOf, shape, string, oneOfType, object, number } from 'prop-types';
-import { GEL_SPACING, GEL_SPACING_DBL } from '@bbc/gel-foundations/spacings';
+import {
+  GEL_SPACING,
+  GEL_SPACING_DBL,
+} from '#legacy/gel-foundations/src/spacings';
+
+import { getDoublePica } from '#legacy/gel-foundations/src/typography';
+import { getSansRegular } from '#legacy/psammead-styles/src/font-styles';
+import { C_SHADOW } from '#legacy/psammead-styles/src/colours';
 import styled from '@emotion/styled';
+import path from 'ramda/src/path';
+import pathOr from 'ramda/src/pathOr';
 import isEmpty from 'ramda/src/isEmpty';
 import tail from 'ramda/src/tail';
 import {
+  GEL_GROUP_0_SCREEN_WIDTH_MIN,
   GEL_GROUP_2_SCREEN_WIDTH_MIN,
   GEL_GROUP_4_SCREEN_WIDTH_MIN,
-} from '@bbc/gel-foundations/breakpoints';
+} from '#legacy/gel-foundations/src/breakpoints';
 import { GridItemMediumNoMargin } from '#app/components/Grid';
 import { ServiceContext } from '#contexts/ServiceContext';
 import useViewTracker from '#hooks/useViewTracker';
 import useClickTrackerHandler from '#hooks/useClickTrackerHandler';
+import idSanitiser from '#lib/utilities/idSanitiser';
 import Promo from './Promo';
 import PromoList from './PromoList';
 
@@ -26,8 +37,29 @@ const PromoWrapper = styled.div`
   }
 `;
 
+const LabelComponent = styled.strong`
+  display: block;
+  ${({ script }) => script && getDoublePica(script)};
+  ${({ service }) => getSansRegular(service)}
+  margin-bottom: ${GEL_SPACING_DBL};
+  color: ${C_SHADOW};
+
+  ${({ dir }) =>
+    `
+    @media (min-width: ${GEL_GROUP_0_SCREEN_WIDTH_MIN}){
+      margin-${dir === 'ltr' ? 'left' : 'right'}: ${GEL_SPACING};
+    }
+    @media (min-width: ${GEL_GROUP_2_SCREEN_WIDTH_MIN}){
+      margin-${dir === 'ltr' ? `left` : `right`}: ${GEL_SPACING_DBL};  
+    }
+    @media (min-width: ${GEL_GROUP_4_SCREEN_WIDTH_MIN}){
+        margin-${dir === 'ltr' ? `left` : `right`}: 0;
+    }
+`}
+`;
+
 const ScrollablePromo = ({ blocks, blockGroupIndex }) => {
-  const { dir } = useContext(ServiceContext);
+  const { script, service, dir, translations } = useContext(ServiceContext);
 
   const eventTrackingData = {
     componentName: `edoj${blockGroupIndex}`,
@@ -37,16 +69,50 @@ const ScrollablePromo = ({ blocks, blockGroupIndex }) => {
   const viewRef = useViewTracker(eventTrackingData);
   const handleClickTracking = useClickTrackerHandler(eventTrackingData);
 
-  if (isEmpty(blocks)) {
+  if (!blocks || isEmpty(blocks)) {
     return null;
   }
+
+  const title =
+    blocks[0].type === 'title' &&
+    path(
+      ['0', 'model', 'blocks', '0', 'model', 'blocks', '0', 'model', 'text'],
+      blocks,
+    );
 
   const blocksWithoutTitle = blocks[0].type === 'title' ? tail(blocks) : blocks;
 
   const isSingleItem = blocksWithoutTitle.length === 1;
 
+  const ariaLabel = title && idSanitiser(title);
+
+  const a11yAttributes = {
+    as: 'section',
+    role: 'region',
+    ...(ariaLabel
+      ? { 'aria-labelledby': ariaLabel }
+      : {
+          'aria-label': pathOr(
+            'Related Content',
+            ['relatedContent'],
+            translations,
+          ),
+        }),
+  };
+
   return (
-    <GridItemMediumNoMargin>
+    <GridItemMediumNoMargin {...a11yAttributes}>
+      {title && (
+        <LabelComponent
+          id={ariaLabel}
+          data-testid="eoj-recommendations-heading"
+          script={script}
+          service={service}
+          dir={dir}
+        >
+          {title}
+        </LabelComponent>
+      )}
       {isSingleItem ? (
         <PromoWrapper dir={dir} ref={viewRef}>
           <Promo block={blocksWithoutTitle[0]} onClick={handleClickTracking} />

@@ -6,7 +6,6 @@ import { RequestContext } from '#contexts/RequestContext';
 import {
   getIconAssetUrl,
   getIconLinks,
-  renderAmpHtml,
   getAppleTouchUrl,
   renderAlternateLinks,
   renderAppleItunesApp,
@@ -51,6 +50,7 @@ const MetadataContainer = ({
   imageHeight,
   children,
   hasAppleItunesAppBanner,
+  hasAmpPage,
 }) => {
   const {
     isAmp,
@@ -60,6 +60,7 @@ const MetadataContainer = ({
     ampUkLink,
     canonicalNonUkLink,
     ampNonUkLink,
+    pathname,
   } = useContext(RequestContext);
 
   const {
@@ -109,6 +110,7 @@ const MetadataContainer = ({
 
   const metaImage = image || defaultImage;
   const metaImageAltText = imageAltText || defaultImageAltText;
+  const linkToAmpPage = hasAmpPage && !isAmp;
 
   return (
     <Helmet htmlAttributes={htmlAttributes}>
@@ -126,7 +128,7 @@ const MetadataContainer = ({
       {isoLang &&
         !isEnglishService &&
         alternateLinksWsSites.map(renderAlternateLinks)}
-      {renderAmpHtml(ampLink, isAmp)}
+      {linkToAmpPage && <link rel="amphtml" href={ampLink} />}
       {renderAppleItunesApp({
         iTunesAppId,
         canonicalLink,
@@ -162,6 +164,12 @@ const MetadataContainer = ({
       <meta name="twitter:image:src" content={metaImage} />
       <meta name="twitter:site" content={twitterSite} />
       <meta name="twitter:title" content={socialTitle} />
+      {!isAmp && (
+        <meta
+          httpEquiv="onion-location"
+          content={`https://www.bbcweb3hytmzhn5d532owbu6oqadra5z3ar726vq5kgwwn6aucdccrad.onion${pathname}`}
+        />
+      )}
       {Boolean(aboutTags && aboutTags.length) && renderTags(aboutTags)}
       {Boolean(mentionsTags && mentionsTags.length) && renderTags(mentionsTags)}
       <link rel="apple-touch-icon" href={appleTouchIcon} />
@@ -201,6 +209,7 @@ MetadataContainer.propTypes = {
   imageHeight: number,
   children: node,
   hasAppleItunesAppBanner: bool,
+  hasAmpPage: bool,
 };
 
 MetadataContainer.defaultProps = {
@@ -213,6 +222,7 @@ MetadataContainer.defaultProps = {
   imageHeight: null,
   children: null,
   hasAppleItunesAppBanner: false,
+  hasAmpPage: true,
 };
 
 export default MetadataContainer;

@@ -3,11 +3,11 @@ import {
   C_WHITE,
   C_GHOST,
   C_POSTBOX_30,
-} from '@bbc/psammead-styles/colours';
-import { devanagariAndGurmukhi } from '@bbc/gel-foundations/scripts';
-import { telugu as brandSVG } from '@bbc/psammead-assets/svgs';
-import { F_MALLANNA_REGULAR } from '@bbc/psammead-styles/fonts';
-import '@bbc/moment-timezone-include/tz/Asia/Kolkata';
+} from '#legacy/psammead-styles/src/colours';
+import devanagariAndGurmukhi from '#legacy/gel-foundations/src/scripts/devanagari-and-gurmukhi';
+import { telugu as brandSVG } from '#legacy/psammead-assets/src/svgs';
+import { F_MALLANNA_REGULAR } from '#legacy/psammead-styles/src/fonts';
+import '#legacy/moment-timezone-include/tz/Asia/Kolkata';
 import withContext from '../../../contexts/utils/withContext';
 import 'moment/locale/te';
 
@@ -60,6 +60,11 @@ export const service = {
     showAdPlaceholder: false,
     showRelatedTopics: true,
     translations: {
+      pagination: {
+        previousPage: 'మునుపటి',
+        nextPage: 'తదుపరి',
+        pageXOfY: 'Page {x} లో {y}',
+      },
       ads: {
         advertisementLabel: 'వ్యాపార ప్రకటన',
       },
@@ -294,8 +299,8 @@ export const service = {
           text: 'కుకీలు',
         },
         {
-          href: 'https://www.bbc.co.uk/send/u50853775',
-          text: 'బీబీసీని సంప్రదించండి',
+          href: 'https://www.bbc.co.uk/telugu/send/u50853775',
+          text: 'BBCని సంప్రదించండి',
         },
         {
           id: 'COOKIE_SETTINGS',

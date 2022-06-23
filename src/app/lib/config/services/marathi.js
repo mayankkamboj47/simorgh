@@ -3,11 +3,11 @@ import {
   C_WHITE,
   C_GHOST,
   C_POSTBOX_30,
-} from '@bbc/psammead-styles/colours';
-import { devanagariAndGurmukhi } from '@bbc/gel-foundations/scripts';
-import { marathi as brandSVG } from '@bbc/psammead-assets/svgs';
-import '@bbc/moment-timezone-include/tz/Asia/Kolkata';
-import '@bbc/psammead-locales/moment/mr';
+} from '#legacy/psammead-styles/src/colours';
+import devanagariAndGurmukhi from '#legacy/gel-foundations/src/scripts/devanagari-and-gurmukhi';
+import { marathi as brandSVG } from '#legacy/psammead-assets/src/svgs';
+import '#legacy/moment-timezone-include/tz/Asia/Kolkata';
+import '#legacy/psammead-locales/moment/mr';
 import withContext from '../../../contexts/utils/withContext';
 
 export const service = {
@@ -72,6 +72,12 @@ export const service = {
       },
     },
     translations: {
+      pagination: {
+        page: 'पान',
+        previousPage: 'मागील',
+        nextPage: 'पुढील',
+        pageXOfY: 'पान {x} पैकी {y}',
+      },
       ads: {
         advertisementLabel: 'जाहिरात',
       },
@@ -303,8 +309,8 @@ export const service = {
           text: 'कुकीज',
         },
         {
-          href: 'https://www.bbc.co.uk/send/u50853467',
-          text: 'बीबीसीशी संपर्क साधा',
+          href: 'https://www.bbc.co.uk/marathi/send/u50853467',
+          text: 'बीबीसीशी संपर्क साधाा',
         },
         {
           id: 'COOKIE_SETTINGS',

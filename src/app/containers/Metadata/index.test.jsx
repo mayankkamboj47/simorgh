@@ -1,6 +1,5 @@
 import React from 'react';
 import { render, waitFor } from '@testing-library/react';
-import { shouldMatchSnapshot } from '@bbc/psammead-test-helpers';
 import {
   ARTICLE_PAGE,
   FRONT_PAGE,
@@ -17,6 +16,7 @@ import { RequestContextProvider } from '#contexts/RequestContext';
 import frontPageData from '#data/igbo/frontpage/index.json';
 import liveRadioPageData from '#data/korean/bbc_korean_radio/liveradio.json';
 import { getSummary } from '#lib/utilities/parseAssetData/index';
+import { shouldMatchSnapshot } from '#legacy/psammead-test-helpers/src';
 import MetadataContainer from './index';
 
 const dotComOrigin = 'https://www.bbc.com';
@@ -53,6 +53,7 @@ const MetadataWithContext = ({
   aboutTags,
   mentionsTags,
   hasAppleItunesAppBanner,
+  hasAmpPage,
   /* eslint-enable react/prop-types */
 }) => (
   <ServiceContextProvider service={service} pageLang={lang}>
@@ -77,12 +78,13 @@ const MetadataWithContext = ({
         imageHeight={imageHeight}
         imageWidth={imageWidth}
         hasAppleItunesAppBanner={hasAppleItunesAppBanner}
+        hasAmpPage={hasAmpPage}
       />
     </RequestContextProvider>
   </ServiceContextProvider>
 );
 
-const CanonicalNewsInternationalOrigin = () => (
+const CanonicalNewsInternationalOrigin = props => (
   <MetadataWithContext
     service="news"
     bbcOrigin={dotComOrigin}
@@ -91,6 +93,7 @@ const CanonicalNewsInternationalOrigin = () => (
     pageType={ARTICLE_PAGE}
     pathname="/news/articles/c0000000001o"
     {...newsArticleMetadataProps}
+    {...props}
   />
 );
 
@@ -540,6 +543,30 @@ it('should render the LDP tags', async () => {
     }));
 
     expect(actual).toEqual(expected);
+  });
+});
+
+it('should render the amp page link tag by default', async () => {
+  render(<CanonicalNewsInternationalOrigin />);
+
+  await waitFor(() => {
+    const ampLinkEl = document.querySelector('head > link[rel="amphtml"]');
+    const ampUrl = ampLinkEl.getAttribute('href');
+
+    expect(ampLinkEl).toBeInTheDocument();
+    expect(ampUrl).toEqual(
+      'https://www.bbc.com/news/articles/c0000000001o.amp',
+    );
+  });
+});
+
+it('should not render the amp page link tag if hasAmpPage is false', async () => {
+  render(<CanonicalNewsInternationalOrigin hasAmpPage={false} />);
+
+  await waitFor(() => {
+    const ampLinkEl = document.querySelector('head > link[rel="amphtml"]');
+
+    expect(ampLinkEl).not.toBeInTheDocument();
   });
 });
 

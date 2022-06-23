@@ -1,15 +1,18 @@
 import React from 'react';
-import { shape, string, oneOf, number } from 'prop-types';
+import { shape, string, oneOf, number, bool } from 'prop-types';
 import styled from '@emotion/styled';
-import { getFoolscap, getTrafalgar } from '@bbc/gel-foundations/typography';
+import {
+  getFoolscap,
+  getTrafalgar,
+} from '#legacy/gel-foundations/src/typography';
 import {
   Burmese,
   Bengali,
   EasternArabic,
   Nepali,
   WesternArabic,
-} from '@bbc/psammead-locales/numerals';
-import { GEL_SPACING_HLF } from '@bbc/gel-foundations/spacings';
+} from '#legacy/psammead-locales/src/numerals';
+import { GEL_SPACING_HLF } from '#legacy/gel-foundations/src/spacings';
 import {
   GEL_GROUP_5_SCREEN_WIDTH_MIN,
   GEL_GROUP_3_SCREEN_WIDTH_MIN,
@@ -18,11 +21,11 @@ import {
   GEL_GROUP_1_SCREEN_WIDTH_MIN,
   GEL_GROUP_1_SCREEN_WIDTH_MAX,
   GEL_GROUP_0_SCREEN_WIDTH_MAX,
-} from '@bbc/gel-foundations/breakpoints';
-import { C_POSTBOX } from '@bbc/psammead-styles/colours';
-import { scriptPropType } from '@bbc/gel-foundations/prop-types';
-import { grid } from '@bbc/psammead-styles/detection';
-import { getSerifLight } from '@bbc/psammead-styles/font-styles';
+} from '#legacy/gel-foundations/src/breakpoints';
+import { C_POSTBOX } from '#legacy/psammead-styles/src/colours';
+import { scriptPropType } from '#legacy/gel-foundations/src/prop-types';
+import { grid } from '#legacy/psammead-styles/src/detection';
+import { getSerifLight } from '#legacy/psammead-styles/src/font-styles';
 import {
   doubleDigitDefault,
   doubleDigitMedium,
@@ -150,7 +153,7 @@ const StyledSpan = styled.span`
     service === 'japanese' && `letter-spacing: -${GEL_SPACING_HLF}`}
 `;
 
-const serviceNumerals = service => {
+export const serviceNumerals = service => {
   const servicesNonWesternNumerals = {
     bengali: Bengali,
     burmese: Burmese,
@@ -178,9 +181,10 @@ const MostReadRank = ({
   dir,
   columnLayout,
   size,
+  isAmp,
 }) => {
   const numerals = serviceNumerals(service);
-  const rank = numerals[listIndex];
+  const rank = isAmp ? listIndex : numerals[listIndex];
   const RankWrapper = getColumnWrapper(columnLayout);
 
   return (
@@ -206,12 +210,14 @@ MostReadRank.propTypes = {
   dir: oneOf(['rtl', 'ltr']),
   columnLayout: oneOf(['oneColumn', 'twoColumn', 'multiColumn']),
   size: oneOf(['default', 'small']),
+  isAmp: bool,
 };
 
 MostReadRank.defaultProps = {
   dir: 'ltr',
   columnLayout: 'multiColumn',
   size: 'default',
+  isAmp: false,
 };
 
 export default MostReadRank;

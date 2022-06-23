@@ -3,10 +3,10 @@ import {
   C_WHITE,
   C_GHOST,
   C_POSTBOX_30,
-} from '@bbc/psammead-styles/colours';
-import { noAscendersOrDescenders } from '@bbc/gel-foundations/scripts';
-import { korean as brandSVG } from '@bbc/psammead-assets/svgs';
-import '@bbc/moment-timezone-include/tz/Asia/Seoul';
+} from '#legacy/psammead-styles/src/colours';
+import noAscendersOrDescenders from '#legacy/gel-foundations/src/scripts/no-ascenders-or-descenders';
+import { korean as brandSVG } from '#legacy/psammead-assets/src/svgs';
+import '#legacy/moment-timezone-include/tz/Asia/Seoul';
 import withContext from '../../../contexts/utils/withContext';
 import 'moment/locale/ko';
 
@@ -59,6 +59,11 @@ export const service = {
     showAdPlaceholder: false,
     showRelatedTopics: true,
     translations: {
+      pagination: {
+        previousPage: '이전',
+        nextPage: '다음',
+        pageXOfY: 'Page {x} / {y}',
+      },
       ads: {
         advertisementLabel: '광고',
       },
@@ -288,7 +293,7 @@ export const service = {
           text: '쿠키정책',
         },
         {
-          href: 'https://www.bbc.co.uk/send/u50853423',
+          href: 'https://www.bbc.co.uk/korean/send/u50853423',
           text: '고객센터',
         },
         {

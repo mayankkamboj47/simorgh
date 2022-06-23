@@ -3,11 +3,11 @@ import {
   C_WHITE,
   C_GHOST,
   C_POSTBOX_30,
-} from '@bbc/psammead-styles/colours';
-import { thai } from '@bbc/gel-foundations/scripts';
-import { thai as brandSVG } from '@bbc/psammead-assets/svgs';
-import '@bbc/moment-timezone-include/tz/Asia/Bangkok';
-import '@bbc/psammead-locales/moment/th';
+} from '#legacy/psammead-styles/src/colours';
+import thai from '#legacy/gel-foundations/src/scripts/thai';
+import { thai as brandSVG } from '#legacy/psammead-assets/src/svgs';
+import '#legacy/moment-timezone-include/tz/Asia/Bangkok';
+import '#legacy/psammead-locales/moment/th';
 import withContext from '../../../contexts/utils/withContext';
 
 export const service = {
@@ -59,9 +59,16 @@ export const service = {
     showAdPlaceholder: false,
     showRelatedTopics: true,
     translations: {
+      pagination: {
+        previousPage: 'ก่อนหน้านี้',
+        nextPage: 'ถัดไป',
+        pageXOfY: 'Page {x} ของ {y}',
+      },
       ads: {
         advertisementLabel: 'โฆษณา',
       },
+      recommendationTitle: 'เรื่องแนะนำ',
+      splitRecommendationTitle: 'เรื่่องแนะนำอื่น ๆ',
       seeAll: 'ดูทั้งหมด',
       home: 'หน้าแรก',
       currentPage: 'หน้าปัจจุบัน',
@@ -286,7 +293,7 @@ export const service = {
       },
       {
         title: 'วิดีโอ',
-        url: '/thai/media/video',
+        url: '/thai/topics/c5ljd3jng4nt',
       },
       {
         title: 'ยอดนิยม',
@@ -320,7 +327,7 @@ export const service = {
           text: 'คุกกีส์',
         },
         {
-          href: 'https://www.bbc.co.uk/send/u50853797',
+          href: 'https://www.bbc.co.uk/thai/send/u50853797',
           text: 'ติดต่อบีบีซี',
         },
         {

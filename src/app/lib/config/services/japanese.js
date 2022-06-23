@@ -3,10 +3,10 @@ import {
   C_WHITE,
   C_GHOST,
   C_POSTBOX_30,
-} from '@bbc/psammead-styles/colours';
-import { noAscendersOrDescenders } from '@bbc/gel-foundations/scripts';
-import { japanese as brandSVG } from '@bbc/psammead-assets/svgs';
-import '@bbc/moment-timezone-include/tz/Asia/Tokyo';
+} from '#legacy/psammead-styles/src/colours';
+import noAscendersOrDescenders from '#legacy/gel-foundations/src/scripts/no-ascenders-or-descenders';
+import { japanese as brandSVG } from '#legacy/psammead-assets/src/svgs';
+import '#legacy/moment-timezone-include/tz/Asia/Tokyo';
 import 'moment/locale/ja';
 import withContext from '../../../contexts/utils/withContext';
 
@@ -60,6 +60,12 @@ export const service = {
     showAdPlaceholder: true,
     showRelatedTopics: true,
     translations: {
+      pagination: {
+        page: 'ページ',
+        previousPage: '前に戻る',
+        nextPage: '次へ',
+        pageXOfY: 'ページ {x} ／ {y}',
+      },
       ads: {
         advertisementLabel: '広告',
       },
@@ -283,7 +289,7 @@ export const service = {
         },
         {
           href: 'https://www.bbc.co.uk/contact',
-          text: 'BBCに連絡する',
+          text: 'BBC に連絡する',
         },
         {
           id: 'COOKIE_SETTINGS',
@@ -300,6 +306,10 @@ export const service = {
       {
         title: 'ホーム',
         url: '/japanese',
+      },
+      {
+        title: 'ウクライナ侵攻',
+        url: '/japanese/60631515',
       },
       {
         title: 'コロナウイルス',
@@ -331,7 +341,7 @@ export const service = {
       },
       {
         title: 'ビデオ',
-        url: '/japanese/video-55128146',
+        url: '/japanese/topics/c132079wln0t',
       },
       {
         title: 'ワールドニュースTV',

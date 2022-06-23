@@ -3,10 +3,10 @@ import {
   C_WHITE,
   C_GHOST,
   C_POSTBOX_30,
-} from '@bbc/psammead-styles/colours';
-import { noAscendersOrDescenders } from '@bbc/gel-foundations/scripts';
-import { zhongwen as brandSVG } from '@bbc/psammead-assets/svgs';
-import '@bbc/moment-timezone-include/tz/GMT';
+} from '#legacy/psammead-styles/src/colours';
+import noAscendersOrDescenders from '#legacy/gel-foundations/src/scripts/no-ascenders-or-descenders';
+import { zhongwen as brandSVG } from '#legacy/psammead-assets/src/svgs';
+import '#legacy/moment-timezone-include/tz/GMT';
 import 'moment/locale/zh-cn';
 import withContext from '../../../contexts/utils/withContext';
 
@@ -109,7 +109,7 @@ export const service = {
           text: 'Cookies',
         },
         {
-          href: 'https://www.bbc.co.uk/send/u50778626',
+          href: 'https://www.bbc.co.uk/zhongwen/send/u50778626',
           text: '联络BBC',
         },
         {
@@ -171,6 +171,11 @@ export const service = {
       variant: 'trad',
     },
     translations: {
+      pagination: {
+        previousPage: '前页',
+        nextPage: '后页',
+        pageXOfY: 'Page {x} 的 {y}',
+      },
       ads: {
         advertisementLabel: '广告',
       },
@@ -451,6 +456,11 @@ export const service = {
       variant: 'simp',
     },
     translations: {
+      pagination: {
+        previousPage: '前页',
+        nextPage: '后页',
+        pageXOfY: 'Page {x} 的 {y}',
+      },
       ads: {
         advertisementLabel: '廣告',
       },
